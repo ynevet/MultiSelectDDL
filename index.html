@@ -1,0 +1,35 @@
+<html ng-app>
+<head>
+<title>Multiple Select Drop-Down List using AngularJS</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js" type="text/javascript"></script>
+<script src="script.js" type="text/javascript"></script>
+<script src="multiSelectCtrl.js" type="text/javascript"></script>
+</head>
+<body>
+<div ng-controller="multiSelectCtrl">
+<h3></strong>Please select your favorite airlines:</h3>
+<div class="multiple-select-wrapper">
+  <div class="selected-items-box">
+                            <span class="dropdown-icon"></span>
+                            <ul class="items-list">
+                                <li ng-repeat="airline in Airlines | filter: getSelectedItemsOnly| limitTo: 3">
+                                    <img ng-src="{{airline.img}}" title="{{airline.name}}" alt="{{airline.name}}" />
+                                </li>
+                                <span ng-show="(Airlines | filter: getSelectedItemsOnly).length > 3" title="See more selections..">...</span>
+                            </ul>
+                        </div>
+        <div class="list">
+                 <ul class="items-list">
+                        <li ng-repeat="airline in Airlines">
+                                <input type="checkbox" ng-model="airline.selected" />
+                                <img ng-src="{{airline.img}}" title="{{airline.name}}" alt="{{airline.name}}" />
+                <span>{{airline.name}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>
